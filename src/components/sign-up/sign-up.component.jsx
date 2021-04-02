@@ -1,6 +1,6 @@
 import React from 'react';
 
-import FormInput from '../form-input';
+import FormInput from '../form-input/form-input.component';
 import CustomButon from '../custom-button/custom-button.component';
 
 import { auth, createUserProfileDocument } from '../../firebase/firebase.utils';
@@ -24,8 +24,8 @@ class SignUp extends React.Component {
 
     const {displayName, email, password, confirmPassword} = this.state;
 
-    if(password != confirmPassword){
-      alert("Passwords dont' match");
+    if(password !== confirmPassword){
+      alert("Passwords don't match!");
       return;
     }
 
@@ -85,7 +85,7 @@ class SignUp extends React.Component {
             required />
           <FormInput
             type='password'
-            name='econfirmPassword'
+            name='confirmPassword'
             value={confirmPassword}
             onChange={this.handleChange}
             label='Confirm Password'
