@@ -12,4 +12,13 @@ export const addItemToCart = (cartItems, cartItemToAdd) => {
   }
 
   return [...cartItems, {...cartItemToAdd, quantity: 1}]
-}
+};
+
+export const removeItemFromCart = (cartItems, itemToRemove) =>
+  cartItems.flatMap((item) => {
+    return item.id !== itemToRemove.id
+      ? item
+      : item.quantity === 1
+      ? []
+      : { ...item, quantity: item.quantity - 1 };
+  });
